@@ -1,14 +1,11 @@
-import './App.css'
-import Pokedex from './components/pokedex'
+import LayoutPage from "./pages/layout";
 
 function App() {
-
-  return (
-    <>
-    <Pokedex />
-      {/* <Index name='nahuel' id={5}/> */}
-    </>
-  )
+    return (
+        <>
+            <LayoutPage />
+        </>
+    );
 }
 
-export default App
+export default App;
