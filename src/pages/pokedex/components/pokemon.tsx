@@ -3,32 +3,16 @@ import { InterfacePokemon } from "../../../interfaces/interfaces";
 import Abilities from "./abilities";
 import { PokemonContext } from "../../../context/PokemonContext";
 
-const Pokemon = (props: { pokemon: InterfacePokemon }) => {
-    const dataPokemons = useContext(PokemonContext);
-    const deletePokemon = () => {
-        dataPokemons.setPokemons(
-            dataPokemons.filterPokemons.filter(
-                (item) => item.id !== props.pokemon.id
-            )
-        );
-    };
+const Pokemon = (props: { pokemon: InterfacePokemon, deletePokemon: (id: number) => void }) => {
     return (
-        <div
-            className="card-pokemon"
-            style={{
-                width: 250,
-                padding: 10,
-                margin: 10,
-                border: "1px solid white",
-                borderRadius: 15,
-                boxShadow: "1px 2px 9px #F4AAB9",
-            }}
-        >
-            <h2>
+        <div className="bg-pink-200 w-60 p-3 m-3 rounded-xl border border-pink-900">
+            <h2 className="text-center text-3xl">
                 {props.pokemon.name[0].toUpperCase() +
                     props.pokemon.name.substring(1)}
             </h2>
+            <p className="text-center">{props.pokemon.weight / 10} Kg </p>
             <img
+                className="mx-auto"
                 src={props.pokemon.sprites.front_default}
                 style={{ width: 150, height: 150 }}
             />
@@ -41,11 +25,14 @@ const Pokemon = (props: { pokemon: InterfacePokemon }) => {
                 }}
             >
                 <Abilities pokemon={props.pokemon} />
-                <div style={{ margin: 10 }}>
-                    <h3>Weigth:</h3>
-                    <p>{props.pokemon.weight}</p>
-                    <button onClick={deletePokemon}>Eliminar</button>
-                </div>
+            </div>
+            <div className="w-100 flex justify-center pt-3">
+                <button
+                    className="text-xl border border-pink-900 p-1 px-3 rounded-md text-white bg-pink-400 hover:bg-pink-500 active:bg-pink-600 transition-all"
+                    onClick={()=>{props.deletePokemon(props.pokemon.id)}}
+                >
+                    Eliminar
+                </button>
             </div>
         </div>
     );
