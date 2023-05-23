@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { InterfacePokemon } from "../../../interfaces/interfaces";
 import Abilities from "./abilities";
-import { PokemonContext } from "../../../context/PokemonContext";
 
 const Pokemon = (props: { pokemon: InterfacePokemon, deletePokemon: (id: number) => void }) => {
     return (

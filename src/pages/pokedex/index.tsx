@@ -62,7 +62,7 @@ const Pokedex = () => {
         : resultByPokemon;
         const deletePokemon = (id: number) => {
             dataPokemons.setPokemons(
-                dataPokemons.filterPokemons.filter(
+                pokemonFilterByAbilities.filter(
                     (item) => item.id !== id
                 )
             );
